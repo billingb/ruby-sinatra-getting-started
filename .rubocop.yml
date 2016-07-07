@@ -1,0 +1,19 @@
+AllCops:
+  Include:
+    - tasks/*.rake
+    - Guardfile
+    - Rakefile
+    - '**/*.builder'
+  Exclude:
+    - gem/**/*
+    - puppet/**/*
+    - vendor/bundle/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/RegexpLiteral:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
