@@ -6,6 +6,8 @@ gem 'json'
 gem 'puma'
 gem 'rake'
 gem 'sinatra'
+gem 'sequel'
+gem 'pg'
 
 group :test do
   gem 'guard'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 workers Integer(ENV['WEB_CONCURRENCY'] || 5)
 threads_count = Integer(ENV['MAX_THREADS'] || 10)
 threads threads_count, threads_count
