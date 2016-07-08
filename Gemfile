@@ -8,6 +8,7 @@ gem 'rake'
 gem 'sinatra'
 gem 'sequel'
 gem 'pg'
+gem 'bcrypt'
 
 group :test do
   gem 'guard'
