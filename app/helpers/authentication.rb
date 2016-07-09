@@ -17,8 +17,8 @@ module Helpers
     end
 
     def authorized?
-      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? and @auth.basic? and @auth.credentials and user_authorized?(@auth.credentials)
+      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+      @auth.provided? && @auth.basic? && @auth.credentials && user_authorized?(@auth.credentials)
     end
   end
 end
