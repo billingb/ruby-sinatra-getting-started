@@ -4,21 +4,21 @@ require File.join(File.dirname(__FILE__), '..', 'repositories', 'user')
 
 module Helpers
   module Authentication
-    def protected!(sequel_DB)
-      return if authorized?(sequel_DB)
+    def protected!
+      return if authorized?
       headers['WWW-Authenticate'] = 'Basic realm="Restricted Area"'
       halt 401, "Not authorized\n"
     end
 
-    def user_authorized?(sequel_DB, credentials)
+    def user_authorized?(credentials)
       username, password = credentials
-      user = Repositories::User.find_user_by_email(sequel_DB, username)
+      user = Repositories::User.find_user_by_email(username)
       user.authenticate?(password)
     end
 
-    def authorized?(sequel_DB)
+    def authorized?
       @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? and @auth.basic? and @auth.credentials and user_authorized?(sequel_DB, @auth.credentials)
+      @auth.provided? and @auth.basic? and @auth.credentials and user_authorized?(@auth.credentials)
     end
   end
 end

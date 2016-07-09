@@ -3,10 +3,10 @@
 require 'sinatra'
 require 'json'
 require 'sequel'
+require File.join(File.dirname(__FILE__), 'database')
 require File.join(File.dirname(__FILE__), 'helpers', 'authentication')
 
 class App < Sinatra::Base
-  DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/billingb')
   helpers Helpers::Authentication
 
   get '/hello' do
@@ -15,8 +15,8 @@ class App < Sinatra::Base
   end
 
   get '/messages' do
-    protected!(DB)
+    protected!
     content_type :json
-    DB[:messages].to_a.to_json
+    Database::DB[:messages].to_a.to_json
   end
 end
