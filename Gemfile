@@ -9,6 +9,7 @@ gem 'sinatra'
 gem 'sequel'
 gem 'pg'
 gem 'bcrypt'
+gem 'warden'
 
 group :test do
   gem 'guard'

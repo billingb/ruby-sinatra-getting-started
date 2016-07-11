@@ -21,6 +21,10 @@ module Entities
       password == submitted_password
     end
 
+    def email
+      record[:email]
+    end
+
     def password=(password)
       record[:password_digest] = BCrypt::Password.create(password)
     end
