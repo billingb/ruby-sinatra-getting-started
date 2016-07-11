@@ -11,8 +11,7 @@ describe 'Entities::User' do
   end
 
   it 'should not authenticate when the passwords do not match' do
-    user = Entities::User.new(email: 'test@test.com')
-    user.password = 'testpass'
+    user = Entities::User.create('test@test.com', 'testpass')
     expect(user.authenticate?('blah')).to be false
   end
 end

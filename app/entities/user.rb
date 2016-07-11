@@ -11,14 +11,26 @@ module Entities
     attr_reader :record
     private :record
 
-    # rubocop:disable AbcSize
+    def self.create(email, password)
+      user = User.new(email: email)
+      user.password = password
+      user
+    end
+
     def authenticate?(submitted_password)
       if record.nil? || record.empty? || record[:email].empty? || record[:password_digest].empty?
         return false
       end
       password = BCrypt::Password.new(record[:password_digest])
-      puts "password_digest: #{record[:password_digest]} "
       password == submitted_password
+    end
+
+    def email
+      record[:email]
+    end
+
+    def password_digest
+      record[:password_digest]
     end
 
     def password=(password)
