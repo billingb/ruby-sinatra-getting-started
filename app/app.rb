@@ -8,10 +8,16 @@ require File.join(File.dirname(__FILE__), 'helpers', 'authentication')
 require File.join(File.dirname(__FILE__), 'controllers', 'authentication')
 require File.join(File.dirname(__FILE__), 'controllers', 'messages')
 
+set :root, File.dirname(__FILE__)
+
 class App < Sinatra::Base
   helpers Helpers::Authentication
   register Controllers::Authentication
   register Controllers::Messages
+
+  get '/' do
+    render :html, :index
+  end
 
   get '/hello' do
     content_type :json
