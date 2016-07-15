@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as AuthenticationActions from '../../actions/AuthenticationActions';
-import { SignUpForm } from '../../components'; //{SignUp, SignIn}
+import { LoginForm, SignUpForm } from '../../components';
 
 class Authentication extends Component {
 
@@ -19,6 +19,7 @@ class Authentication extends Component {
     return (
       <div className="authentication">
         <h1>Welcome</h1>
+        <LoginForm login={actions.login} />
         <SignUpForm signUp={actions.signUp} />
       </div>
     );

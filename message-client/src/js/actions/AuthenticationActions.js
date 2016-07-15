@@ -25,7 +25,26 @@ export function signUp(data) {
       .then(response => response.json())
       .then(json => {
         dispatch(signupSuccess(json));
-        dispatch(push('/messages'));
+        dispatch(push('/friends'));
+      }).catch(e => {
+        console.log('Error making signup request' + e);
+        // e.response.json()
+        //   .then((errorJSON) => {
+        //     dispatch(signupError(errorJSON));
+        //   });
+      })
+  }
+}
+
+export function login(data) {
+  return (dispatch) => {
+    console.log('Starting fetch for signup with data' + data.JSON);
+    return fetch('/login?email=' + data.email + '&password=' + data.password, {method: 'POST'})
+      .then(checkStatus)
+      .then(response => response.json())
+      .then(json => {
+        dispatch(signupSuccess(json));
+        dispatch(push('/friends'));
       }).catch(e => {
         console.log('Error making signup request' + e);
         // e.response.json()
