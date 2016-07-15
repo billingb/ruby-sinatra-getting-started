@@ -7,14 +7,17 @@ module Controllers
   module Authentication
     def self.registered(app)
       app.post '/login' do
-        { message: 'success' }.to_json
+        content_type :json
+        protected!(params)
+        { token: (params[:token] ? params[:token] : "#{params[:email]}//#{params[:password]}") }.to_json
       end
 
       app.post '/signup' do
+        content_type :json
         user = Entities::User.create(params[:email], params[:password])
         Repositories::User.create_user user
         status 201
-        { message: "new user for email #{user.email} created" }.to_json
+        { token: "#{user.email}//#{params[:password]}" }.to_json
       end
     end
   end

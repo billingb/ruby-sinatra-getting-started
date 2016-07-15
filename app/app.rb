@@ -23,4 +23,9 @@ class App < Sinatra::Base
     content_type :json
     { message: 'Hello, world' }.to_json
   end
+
+  #If the route doesn't exist assume it is part of the client
+  get '/*' do
+    render :html, :index
+  end
 end

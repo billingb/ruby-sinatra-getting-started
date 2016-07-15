@@ -15,11 +15,18 @@ module Helpers
     end
 
     def valid?(params)
-      params['username'] && params['password']
+      params['email'] && params['password']
     end
 
     def authorized?(params)
-      user_authorized?(params['username'], params['password'])
+      if(params['token'])
+        puts "token auth: #{params['token']}"
+        username, password = params['token'].split('//')
+        user_authorized?(username, password)
+      else
+        puts "pass auth: #{params['email']}, #{params['password']}}"
+        user_authorized?(params['email'], params['password'])
+      end
     end
   end
 end
