@@ -77,8 +77,13 @@ module.exports = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, '../src'),
-    port: 3000,
-    historyApiFallback: true
+    port: 3001,
+    historyApiFallback: true,
+    proxy: {
+      '/login': {
+        target: 'http://localhost:3000'
+      }
+    }
   },
   devtool: 'eval'
 };

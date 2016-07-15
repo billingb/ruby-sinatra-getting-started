@@ -6,7 +6,8 @@ module Helpers
   module Authentication
     def protected!(params)
       return if authorized?(params)
-      halt 401, "Not authorized\n"
+      content_type :json
+      halt 401, {error: 'Not authorized'}.to_json
     end
 
     def user_authorized?(username, password)

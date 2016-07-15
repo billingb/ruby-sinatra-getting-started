@@ -19,7 +19,7 @@
     "clean:build": "node ./bin/clean.js createdir",
     "build:html": "node ./bin/buildHtml.js",
     "prestart": "node ./bin/clean.js",
-    "start": "webpack-dev-server --config ./config/webpack.config.dev.js --hot --inline --progress",
+    "start": "webpack-dev-server --config ./config/webpack.config.dev.js --hot --inline --progress --port 3001",
     "prebuild": "npm run clean:build && npm run build:html",
     "build": "export NODE_ENV=production & NODE_ENV=production & webpack -p --config ./config/webpack.config.prod.js --progress",
     "build:dev": "export NODE_ENV=dev & NODE_ENV=dev & webpack -p --config ./config/webpack.config.dev.js --progress",

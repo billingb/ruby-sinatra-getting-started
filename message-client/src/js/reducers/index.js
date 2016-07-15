@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import friendList from './friendList';
+import authentication from './authentication';
 
 const rootReducer = combineReducers({
-  friendList
+  friendList,
+  authentication
 });
 
 export default rootReducer;

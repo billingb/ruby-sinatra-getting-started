@@ -5,15 +5,23 @@ import { push } from 'react-router-redux';
 
 function signupSuccess(json) {
   console.log('signup successful: ' + json.token);
+  localStorage.setItem('authToken', json.token);
   return {
     type: types.CURRENT_USER,
-    currentUser: json.token
+    token: json.token
   }
 }
 
-function signupError(json) {
+function signupError() {
   return {
     type: types.SIGNUP_ERROR
+    // error: json.error
+  }
+}
+
+function loginError() {
+  return {
+    type: types.LOGIN_ERROR
   }
 }
 
@@ -28,10 +36,7 @@ export function signUp(data) {
         dispatch(push('/friends'));
       }).catch(e => {
         console.log('Error making signup request' + e);
-        // e.response.json()
-        //   .then((errorJSON) => {
-        //     dispatch(signupError(errorJSON));
-        //   });
+        dispatch(signupError());
       })
   }
 }
@@ -47,10 +52,7 @@ export function login(data) {
         dispatch(push('/friends'));
       }).catch(e => {
         console.log('Error making signup request' + e);
-        // e.response.json()
-        //   .then((errorJSON) => {
-        //     dispatch(signupError(errorJSON));
-        //   });
+        dispatch(loginError());
       })
   }
 }

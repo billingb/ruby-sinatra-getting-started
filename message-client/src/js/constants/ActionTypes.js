@@ -6,3 +6,4 @@ export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 export const LOGIN = 'LOGIN';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const CURRENT_USER = 'CURRENT_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';

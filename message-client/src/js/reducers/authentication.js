@@ -1,16 +1,38 @@
 import * as types from '../constants/ActionTypes';
 
 const initialState = {
-  currentUser: null
+  token: null,
+  userName: null,
+  isAuthenticated: false,
+  isAuthenticating: false,
+  statusText: null
 };
 
-export default function (state = initialState, action) {
+export default function (state = initialState, action, token) {
   switch (action.type) {
     case types.CURRENT_USER:
-      return { ...state, currentUser: action.currentUser };
+      return { ...state,
+        isAuthenticating: false,
+        isAuthenticated: true,
+        token: token,
+        userName: null,
+        statusText: 'You have been successfully logged in.'
+      };
+    case types.LOGOUT_USER:
+      return {...state,
+        'isAuthenticated': false,
+        'token': null,
+        'userName': null,
+        'statusText': 'You have been successfully logged out.'
+      };
     case types.LOGIN_ERROR:
     case types.SIGNUP_ERROR:
-      return {...state, errors: action.errors};
+      return {...state,
+        isAuthenticating: false,
+        isAuthenticated: false,
+        token: null,
+        userName: null,
+        errors: action.errors};
     default:
       return state;
   }
