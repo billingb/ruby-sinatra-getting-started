@@ -8,20 +8,20 @@ const initialState = {
   statusText: null
 };
 
-export default function (state = initialState, action, token) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case types.CURRENT_USER:
       return { ...state,
         isAuthenticating: false,
         isAuthenticated: true,
-        token: token,
+        token: action.token,
         userName: null,
         statusText: 'You have been successfully logged in.'
       };
     case types.LOGOUT_USER:
       return {...state,
         'isAuthenticated': false,
-        'token': null,
+        token: null,
         'userName': null,
         'statusText': 'You have been successfully logged out.'
       };

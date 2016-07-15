@@ -82,6 +82,9 @@ module.exports = {
     proxy: {
       '/login': {
         target: 'http://localhost:3000'
+      },
+      '/messages': {
+        target: 'http://localhost:3000'
       }
     }
   },

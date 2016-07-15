@@ -12,7 +12,17 @@ function signupSuccess(json) {
   }
 }
 
+export function loginUser(token) {
+  console.log('login from token: ' + token);
+  localStorage.setItem('authToken', token);
+  return {
+    type: types.CURRENT_USER,
+    token: token
+  }
+}
+
 function signupError() {
+  localStorage.removeItem('authToken');
   return {
     type: types.SIGNUP_ERROR
     // error: json.error
@@ -20,6 +30,7 @@ function signupError() {
 }
 
 function loginError() {
+  localStorage.removeItem('authToken');
   return {
     type: types.LOGIN_ERROR
   }
@@ -33,7 +44,7 @@ export function signUp(data) {
       .then(response => response.json())
       .then(json => {
         dispatch(signupSuccess(json));
-        dispatch(push('/friends'));
+        dispatch(push('/'));
       }).catch(e => {
         console.log('Error making signup request' + e);
         dispatch(signupError());
@@ -49,7 +60,7 @@ export function login(data) {
       .then(response => response.json())
       .then(json => {
         dispatch(signupSuccess(json));
-        dispatch(push('/friends'));
+        dispatch(push('/'));
       }).catch(e => {
         console.log('Error making signup request' + e);
         dispatch(loginError());

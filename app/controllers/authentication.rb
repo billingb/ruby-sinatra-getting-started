@@ -8,7 +8,7 @@ module Controllers
     def self.registered(app)
       app.post '/login' do
         content_type :json
-        protected!(params)
+        protected!
         { token: (params[:token] ? params[:token] : "#{params[:email]}//#{params[:password]}") }.to_json
       end
 
