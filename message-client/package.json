@@ -15,6 +15,9 @@
     "boilerplate",
     "starter"
   ],
+  "engines": {
+    "node": "4.4.7"
+  },
   "scripts": {
     "clean:build": "node ./bin/clean.js createdir",
     "build:html": "node ./bin/buildHtml.js",
