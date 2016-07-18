@@ -7,7 +7,6 @@
 /*eslint-disable no-console */
 
 var fs = require('fs');
-var colors = require('colors');
 var cheerio = require('cheerio');
 const targetLocation = 'app/views/index.html';
 
@@ -27,5 +26,5 @@ fs.readFile('message-client/src/index.html', 'utf8', (err, markup) => {
     }
   });
 
-  console.log(('index.html written to ' + targetLocation).green);
+  console.log('index.html written to ' + targetLocation);
 });
