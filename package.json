@@ -19,7 +19,7 @@
     "node": "4.4.7"
   },
   "scripts": {
-    "postinstall":  "export NODE_ENV=production & NODE_ENV=production & node_modules/.bin/webpack -p --config ./message-client/config/webpack.config.prod.js & node ./message-client/bin/buildHtml.js",
+    "postinstall":  "export NODE_ENV=production & NODE_ENV=production & webpack -p --config ./message-client/config/webpack.config.prod.js & node ./message-client/bin/buildHtml.js",
     "clean:build": "node ./message-client/bin/clean.js createdir",
     "build:html": "node ./message-client/bin/buildHtml.js",
     "prestart": "node ./message-client/bin/clean.js",

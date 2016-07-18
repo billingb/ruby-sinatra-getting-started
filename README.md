@@ -23,3 +23,4 @@ My boilerplate project for Sinatra + React application.
   1. `heroku buildpacks:add heroku/ruby`
   1. `heroku buildpacks:add --index 1 heroku/nodejs`
   1. Confirm nodejs before ruby buildpack: `heroku buildpacks`
+* Disable node production mode, we need dev dependencies to build with: `heroku config:set NPM_CONFIG_PRODUCTION=false`
