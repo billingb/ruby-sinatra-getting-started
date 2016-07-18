@@ -9,9 +9,9 @@
 var fs = require('fs');
 var colors = require('colors');
 var cheerio = require('cheerio');
-const targetLocation = '../app/views/index.html';
+const targetLocation = 'app/views/index.html';
 
-fs.readFile('src/index.html', 'utf8', (err, markup) => {
+fs.readFile('message-client/src/index.html', 'utf8', (err, markup) => {
   if (err) {
     return console.log(err);
   }
