@@ -1,5 +1,7 @@
 # Ruby + Sinatra & React + Redux simple project
 
+My boilerplate project for Sinatra + React application.
+
 ## Development
 
 ### Node
